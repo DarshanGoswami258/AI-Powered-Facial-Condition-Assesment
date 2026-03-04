@@ -3,139 +3,60 @@ import google.generativeai as genai
 import os
 from PIL import Image
 
-# ----------------------------
-# Page Configuration
-# ----------------------------
-st.set_page_config(
-    page_title="AI Facial Skin Analyzer",
-    page_icon="🧴",
-    layout="wide"
-)
-
-# ----------------------------
-# Configure Gemini
-# ----------------------------
+# configure the model
 key = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=key)
 model = genai.GenerativeModel("gemini-2.5-flash-lite")
 
-# ----------------------------
-# Custom CSS for Better UI
-# ----------------------------
-st.markdown("""
-<style>
 
-.main-title{
-    font-size:38px;
-    font-weight:700;
-    text-align:center;
-}
+# Streamlit page
 
-.sub-text{
-    text-align:center;
-    color:grey;
-    margin-bottom:30px;
-}
+#sidebar
+st.sidebar.title("Upload your Image")
+uploaded_image = st.sidebar.file_uploader("Uplaod Image", type=["jpg", "jpeg", "png"])
+if uploaded_image:
+   image = Image.open(uploaded_image)
+   st.sidebar.image(image)
 
-.result-box{
-    background-color:#f7f7f7;
-    padding:20px;
-    border-radius:10px;
-}
+#mainpage
+st.title('AI Powered Facial Condition Analysis')
 
-</style>
-""", unsafe_allow_html=True)
+Instructions = """To use this application,
+1. Upload a clear image of your face.
+2. Click the "Analyze" button to receive insights about your facial condition.
+Please ensure that the image is well-lit and shows your face clearly for accurate analysis."""
 
-# ----------------------------
-# Title Section
-# ----------------------------
-st.markdown('<div class="main-title">🧴 AI Facial Skin Analyzer</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-text">Upload a facial image and receive an AI-powered dermatology style analysis.</div>', unsafe_allow_html=True)
+st.write(Instructions)
 
-# ----------------------------
-# Layout Columns
-# ----------------------------
-col1, col2 = st.columns([1,1])
-
-# ----------------------------
-# Left Column (Upload Section)
-# ----------------------------
-with col1:
-
-    st.subheader("📤 Upload Image")
-
-    uploaded_image = st.file_uploader(
-        "Upload a clear face image",
-        type=["jpg","jpeg","png"]
-    )
-
-    if uploaded_image:
-        image = Image.open(uploaded_image)
-        st.image(image, caption="Uploaded Image", use_container_width=True)
-
-    st.info(
-    """
-    **Tips for best results**
-    - Use good lighting
-    - Face should be clearly visible
-    - Avoid heavy filters
-    """
-    )
-
-# ----------------------------
-# Prompt
-# ----------------------------
 prompt = """
-You are an Expert Dermatologist.
+You are an Expert Dermatologist
 
-Generate a structured cosmetic facial assessment report based on the user's image.
+Task : Generate a structured cosmetic facial assesment report based on the image provided by the user. The report should include:
+1. Skin Type: Classify the skin type (e.g., oily, dry, combination, sensitive).
+2. Skin Concerns: Identify any visible skin concerns (e.g., acne, wrinkles, hyperpigmentation).
+3. Recommendations: Provide personalized skincare recommendations based on the identified skin type and concerns.
 
-Include:
+constraints:
+1. The report should be concise and easy to understand.
+2. Use non-technical language suitable for a general audience.
+3. Ensure that the recommendations are practical and actionable.
 
-1. Skin Type
-2. Overall Skin Condition
-3. Area-wise Observations
-4. Skin Concerns
-5. Skincare Recommendations
-6. Preventive Measures
+Output format:
+1. Skin Type: [Identified Skin Type]
+2. Overall Skin Condition: [Brief Description of Overall Skin Condition]
+3. Area-wise observations
+4. Skin Concerns: [Identified Skin Concerns]
+5. Recommendations: [Personalized Skincare Recommendations] 
+6. Preventive Measures: [General Tips for Maintaining Healthy Skin]
 
-Ensure the advice is practical and helpful.
 """
 
-# ----------------------------
-# Right Column (Analysis)
-# ----------------------------
-with col2:
+if st.button("Analyse"):
+    if uploaded_image is None:
+      st.error('Please upload an image to analyze.')
 
-    st.subheader("🔎 Skin Analysis")
-
-    if st.button("Analyze Skin", use_container_width=True):
-
-        if uploaded_image is None:
-            st.warning("Please upload an image first.")
-
-        else:
-
-            with st.spinner("AI is analyzing your skin..."):
-
-                response = model.generate_content([prompt, image])
-
-            st.success("Analysis Complete")
-
-            st.markdown("### 🧾 Facial Skin Report")
-
-            st.markdown(
-                f"""
-                <div class="result-box">
-                {response.text}
-                </div>
-                """,
-                unsafe_allow_html=True
-            )
-
-# ----------------------------
-# Footer
-# ----------------------------
-st.markdown("---")
-
-st.caption("Built using Streamlit + Gemini Vision Model | AI Dermatology Assistant Demo")
+    else:
+      with st.spinner('Analyzing the image...'):
+         response = model.generate_content([prompt, image])
+      st.subheader("Facial Condition Analysis Report")
+      st.write(response.text)
