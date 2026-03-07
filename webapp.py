@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────
-# CSS — global only, no HTML injected inside columns
+# CSS
 # ─────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -38,7 +38,6 @@ html, body, [data-testid="stAppViewContainer"] {
 }
 section[data-testid="stMain"] > div:first-child { padding-top: 0 !important; }
 
-/* hero */
 .hero-wrap {
     background: #1A1209;
     padding: 56px 64px 48px;
@@ -75,11 +74,9 @@ section[data-testid="stMain"] > div:first-child { padding-top: 0 !important; }
     0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.85)}
 }
 
-/* section wrappers */
 .section-wrap      { padding: 48px 64px; background:#F5F0EB; }
 .section-wrap-dark { padding: 56px 64px; background:#1A1209; }
 
-/* panel typography */
 .plabel {
     font-family:'DM Mono',monospace; font-size:10px;
     letter-spacing:.28em; color:#8C7B6B; text-transform:uppercase; margin-bottom:6px;
@@ -90,13 +87,11 @@ section[data-testid="stMain"] > div:first-child { padding-top: 0 !important; }
 }
 .pdesc { font-size:13px; color:#8C7B6B; line-height:1.75; font-weight:300; margin-bottom:28px; }
 
-/* steps */
 .step { display:flex; gap:18px; align-items:flex-start; margin-bottom:26px; }
 .step-n { font-family:'DM Mono',monospace; font-size:11px; color:#C4A882; min-width:26px; margin-top:3px; }
 .step h4 { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:600; color:#1A1209; margin-bottom:3px; }
 .step p  { font-size:13px; color:#8C7B6B; line-height:1.65; font-weight:300; }
 
-/* tags */
 .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
 .tag  {
     display:inline-flex; align-items:center; gap:5px; padding:5px 13px;
@@ -104,10 +99,8 @@ section[data-testid="stMain"] > div:first-child { padding-top: 0 !important; }
 }
 .tag-dot { color:#C4A882; font-size:15px; line-height:1; }
 
-/* column divider */
 .col-div { width:1px; min-height:420px; background:rgba(26,18,9,.1); margin:auto; }
 
-/* file uploader */
 [data-testid="stFileUploaderDropzone"] {
     background:rgba(196,168,130,.05) !important;
     border:1.5px dashed rgba(196,168,130,.45) !important;
@@ -123,7 +116,6 @@ section[data-testid="stMain"] > div:first-child { padding-top: 0 !important; }
 [data-testid="stFileUploaderDropzone"] svg { color:#C4A882 !important; }
 [data-testid="stImage"] img { border-radius:12px !important; border:1px solid rgba(26,18,9,.08) !important; }
 
-/* analyze button */
 .stButton > button {
     background:#1A1209 !important; color:#F5F0EB !important;
     border:none !important; border-radius:8px !important;
@@ -137,35 +129,6 @@ section[data-testid="stMain"] > div:first-child { padding-top: 0 !important; }
     box-shadow:0 8px 24px rgba(26,18,9,.25) !important;
 }
 
-/* report */
-.report-title {
-    font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300;
-    color:#F5F0EB; line-height:1.1; margin-bottom:32px;
-}
-.report-title span { font-style:italic; color:#C4A882; }
-.report-body {
-    background:rgba(245,240,235,.04); border:1px solid rgba(196,168,130,.15);
-    border-radius:16px; padding:36px 44px; font-size:14px;
-    color:rgba(245,240,235,.82); line-height:1.95; font-weight:300;
-    white-space:pre-wrap; font-family:'DM Sans',sans-serif;
-}
-
-/* score cards */
-.score-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:36px; }
-.sc {
-    background:rgba(245,240,235,.04); border:1px solid rgba(196,168,130,.15);
-    border-radius:12px; padding:28px 22px; text-align:center; transition:border-color .3s;
-}
-.sc:hover { border-color:rgba(196,168,130,.4); }
-.sc.feat  { border-color:rgba(196,168,130,.35); background:rgba(196,168,130,.06); }
-.sc .sl   { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.25em; color:rgba(196,168,130,.7); text-transform:uppercase; margin-bottom:12px; }
-.sc .sv   { font-family:'Cormorant Garamond',serif; font-size:50px; font-weight:300; color:#F5F0EB; line-height:1; }
-.sc .su   { font-size:18px; color:#C4A882; }
-.sc .ss   { font-size:12px; color:rgba(245,240,235,.4); margin-top:7px; font-weight:300; }
-.bar-wrap { margin-top:12px; height:3px; background:rgba(245,240,235,.08); border-radius:2px; overflow:hidden; }
-.bar      { height:100%; border-radius:2px; background:linear-gradient(90deg,#C4A882,#E8D5B7); }
-
-/* download button */
 [data-testid="stDownloadButton"] > button {
     background:transparent !important; color:#C4A882 !important;
     border:1px solid rgba(196,168,130,.4) !important; border-radius:8px !important;
@@ -178,14 +141,11 @@ section[data-testid="stMain"] > div:first-child { padding-top: 0 !important; }
     background:rgba(196,168,130,.1) !important; border-color:#C4A882 !important;
 }
 
-/* progress */
 [data-testid="stProgressBar"] > div { background:rgba(26,18,9,.08) !important; border-radius:4px !important; height:3px !important; }
 [data-testid="stProgressBar"] > div > div { background:linear-gradient(90deg,#C4A882,#E8D5B7) !important; border-radius:4px !important; }
 
-/* spinner */
 [data-testid="stSpinner"] p { color:rgba(245,240,235,.6) !important; font-size:13px !important; font-weight:300 !important; }
 
-/* footer */
 .footer { text-align:center; padding:36px 64px; border-top:1px solid rgba(26,18,9,.08); background:#F5F0EB; }
 .footer p { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.22em; color:#B5A899; text-transform:uppercase; }
 .footer .orn { font-family:'Cormorant Garamond',serif; font-size:20px; color:#C4A882; margin-top:10px; font-style:italic; }
@@ -206,7 +166,7 @@ model = genai.GenerativeModel("gemini-2.5-flash-lite")
 
 
 # ─────────────────────────────────────────────
-# HERO  (safe — outside columns)
+# HERO
 # ─────────────────────────────────────────────
 st.markdown("""
 <div class="hero-wrap">
@@ -226,10 +186,6 @@ st.markdown("""
 
 # ─────────────────────────────────────────────
 # MAIN COLUMNS
-# The key fix: HTML inside columns is limited to
-# SIMPLE one-element blocks (no nested divs with
-# child elements that Streamlit might escape).
-# All multi-element HTML lives OUTSIDE columns.
 # ─────────────────────────────────────────────
 st.markdown('<div class="section-wrap">', unsafe_allow_html=True)
 
@@ -288,7 +244,7 @@ with col_right:
     </div>
     """, unsafe_allow_html=True)
 
-st.markdown('</div>', unsafe_allow_html=True)   # end section-wrap
+st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ─────────────────────────────────────────────
@@ -392,7 +348,7 @@ if analyze:
 
         report = response.text
         score  = extract_score(report)
-        report_safe = html.escape(report)  # prevents special chars from breaking HTML
+        report_safe = html.escape(report)
         score_label = (
             "Excellent" if score >= 85 else
             "Good"      if score >= 70 else
@@ -400,71 +356,55 @@ if analyze:
             "Needs Attention"
         )
 
-        # ── Single markdown block so the dark wrapper actually contains its children ──
-        st.markdown(f"""
-        <div style="
-            background:#1A1209;
-            padding:56px 64px;
-            margin-top:0;
-            border-radius:0;
-        ">
-            <div style="
-                font-family:'Cormorant Garamond',serif;
-                font-size:40px; font-weight:300;
-                color:#F5F0EB; line-height:1.1; margin-bottom:32px;
-            ">
+        # ── Header ──
+        st.markdown("""
+        <div style="background:#1A1209;padding:56px 64px 0 64px;">
+            <div style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;
+                        color:#F5F0EB;line-height:1.1;margin-bottom:32px;">
                 Your Skin <span style="font-style:italic;color:#C4A882;">Analysis Report</span>
-            </div>
-
-            <div style="
-                background:rgba(245,240,235,.04);
-                border:1px solid rgba(196,168,130,.2);
-                border-radius:16px; padding:36px 44px;
-                font-size:14px; color:rgba(245,240,235,.85);
-                line-height:1.95; font-weight:300;
-                white-space:pre-wrap;
-                font-family:'DM Sans',sans-serif;
-            ">{report_safe}</div>
-
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;">
-                <div style="background:rgba(245,240,235,.04);border:1px solid rgba(196,168,130,.15);border-radius:12px;padding:28px 22px;text-align:center;">
-                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">Analysis Status</div>
-                    <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F5F0EB;margin:10px 0;">Complete</div>
-                    <div style="font-size:12px;color:rgba(245,240,235,.4);font-weight:300;">Full report generated</div>
-                </div>
-                <div style="background:rgba(196,168,130,.06);border:1px solid rgba(196,168,130,.35);border-radius:12px;padding:28px 22px;text-align:center;">
-                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">Skin Health Score</div>
-                    <div style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:300;color:#F5F0EB;line-height:1;">{score}<span style="font-size:18px;color:#C4A882;">/100</span></div>
-                    <div style="font-size:12px;color:rgba(245,240,235,.4);margin-top:7px;font-weight:300;">{score_label}</div>
-                    <div style="margin-top:12px;height:3px;background:rgba(245,240,235,.08);border-radius:2px;">
-                        <div style="width:{score}%;height:100%;border-radius:2px;background:linear-gradient(90deg,#C4A882,#E8D5B7);"></div>
-                    </div>
-                </div>
-                <div style="background:rgba(245,240,235,.04);border:1px solid rgba(196,168,130,.15);border-radius:12px;padding:28px 22px;text-align:center;">
-                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">Report Sections</div>
-                    <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F5F0EB;margin:10px 0;">6 Areas</div>
-                    <div style="font-size:12px;color:rgba(245,240,235,.4);font-weight:300;">Comprehensive coverage</div>
-                </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-        create_pdf(report, score)
-        with open("skin_report.pdf", "rb") as f:
-            st.download_button(
-                label="↓  Download Full PDF Report",
-                data=f,
-                file_name="DermAI_Skin_Report.pdf",
-                mime="application/pdf"
-            )
+        # ── Report text ──
+        st.markdown(f"""
+        <div style="background:#1A1209;padding:0 64px;">
+            <div style="background:rgba(245,240,235,.04);border:1px solid rgba(196,168,130,.2);
+                        border-radius:16px;padding:36px 44px;font-size:14px;
+                        color:rgba(245,240,235,.85);line-height:1.95;font-weight:300;
+                        white-space:pre-wrap;font-family:'DM Sans',sans-serif;">
+{report_safe}
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
-
-# ─────────────────────────────────────────────
-# FOOTER
-# ─────────────────────────────────────────────
-st.markdown("""
-<div class="footer">
-    <p>DermAI &nbsp;·&nbsp; For educational purposes only &nbsp;·&nbsp; Not a substitute for professional medical advice</p>
-    <div class="orn">✦</div>
-</div>
-""", unsafe_allow_html=True)
+        # ── Score cards ──
+        st.markdown(f"""
+        <div style="background:#1A1209;padding:32px 64px 56px 64px;">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+                <div style="background:rgba(245,240,235,.04);border:1px solid rgba(196,168,130,.15);
+                            border-radius:12px;padding:28px 22px;text-align:center;">
+                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;
+                                color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">
+                        Analysis Status
+                    </div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;
+                                color:#F5F0EB;margin:10px 0;">Complete</div>
+                    <div style="font-size:12px;color:rgba(245,240,235,.4);font-weight:300;">Full report generated</div>
+                </div>
+                <div style="background:rgba(196,168,130,.06);border:1px solid rgba(196,168,130,.35);
+                            border-radius:12px;padding:28px 22px;text-align:center;">
+                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;
+                                color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">
+                        Skin Health Score
+                    </div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:300;
+                                color:#F5F0EB;line-height:1;">
+                        {score}<span style="font-size:18px;color:#C4A882;">/100</span>
+                    </div>
+                    <div style="font-size:12px;color:rgba(245,240,235,.4);margin-top:7px;font-weight:300;">
+                        {score_label}
+                    </div>
+                    <div style="margin-top:12px;height:3px;background:rgba(245,240,235,.08);border-radius:2px;">
+                        <div style="width:{score}%;height:100%;border-radius:2px;
+                                    background:linear-gradient(90deg,
