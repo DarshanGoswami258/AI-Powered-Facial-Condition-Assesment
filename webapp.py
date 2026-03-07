@@ -5,6 +5,7 @@ from PIL import Image
 import time
 from fpdf import FPDF
 import re
+import html
 
 # ─────────────────────────────────────────────
 # PAGE CONFIG
@@ -391,6 +392,7 @@ if analyze:
 
         report = response.text
         score  = extract_score(report)
+        report_safe = html.escape(report)  # prevents special chars from breaking HTML
         score_label = (
             "Excellent" if score >= 85 else
             "Good"      if score >= 70 else
@@ -422,7 +424,7 @@ if analyze:
                 line-height:1.95; font-weight:300;
                 white-space:pre-wrap;
                 font-family:'DM Sans',sans-serif;
-            ">{report}</div>
+            ">{report_safe}</div>
 
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;">
                 <div style="background:rgba(245,240,235,.04);border:1px solid rgba(196,168,130,.15);border-radius:12px;padding:28px 22px;text-align:center;">
