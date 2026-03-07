@@ -132,11 +132,11 @@ with right:
     st.subheader("How It Works:")
 
     st.write("""
-1. Upload a **clear face image**
+1.Upload a **clear face image**
 
-2. AI analyzes **skin texture, tone and patterns**
+2.AI analyzes **skin texture, tone and patterns**
 
-3. Receive a **personalized dermatology report**
+3.Receive a **personalized dermatology report**
 
 Report Includes:
 
