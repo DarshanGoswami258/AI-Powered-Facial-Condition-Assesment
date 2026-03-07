@@ -398,30 +398,51 @@ if analyze:
             "Needs Attention"
         )
 
-        # dark report block — HTML is safe here because it's outside columns
-        st.markdown('<div class="section-wrap-dark">', unsafe_allow_html=True)
-        st.markdown(
-            '<div class="report-title">Your Skin <span>Analysis Report</span></div>',
-            unsafe_allow_html=True
-        )
-        st.markdown(f'<div class="report-body">{report}</div>', unsafe_allow_html=True)
+        # ── Single markdown block so the dark wrapper actually contains its children ──
         st.markdown(f"""
-        <div class="score-grid">
-            <div class="sc">
-                <div class="sl">Analysis Status</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F5F0EB;margin:10px 0;">Complete</div>
-                <div class="ss">Full report generated</div>
+        <div style="
+            background:#1A1209;
+            padding:56px 64px;
+            margin-top:0;
+            border-radius:0;
+        ">
+            <div style="
+                font-family:'Cormorant Garamond',serif;
+                font-size:40px; font-weight:300;
+                color:#F5F0EB; line-height:1.1; margin-bottom:32px;
+            ">
+                Your Skin <span style="font-style:italic;color:#C4A882;">Analysis Report</span>
             </div>
-            <div class="sc feat">
-                <div class="sl">Skin Health Score</div>
-                <div class="sv">{score}<span class="su">/100</span></div>
-                <div class="ss">{score_label}</div>
-                <div class="bar-wrap"><div class="bar" style="width:{score}%"></div></div>
-            </div>
-            <div class="sc">
-                <div class="sl">Report Sections</div>
-                <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F5F0EB;margin:10px 0;">6 Areas</div>
-                <div class="ss">Comprehensive coverage</div>
+
+            <div style="
+                background:rgba(245,240,235,.04);
+                border:1px solid rgba(196,168,130,.2);
+                border-radius:16px; padding:36px 44px;
+                font-size:14px; color:rgba(245,240,235,.85);
+                line-height:1.95; font-weight:300;
+                white-space:pre-wrap;
+                font-family:'DM Sans',sans-serif;
+            ">{report}</div>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;">
+                <div style="background:rgba(245,240,235,.04);border:1px solid rgba(196,168,130,.15);border-radius:12px;padding:28px 22px;text-align:center;">
+                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">Analysis Status</div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F5F0EB;margin:10px 0;">Complete</div>
+                    <div style="font-size:12px;color:rgba(245,240,235,.4);font-weight:300;">Full report generated</div>
+                </div>
+                <div style="background:rgba(196,168,130,.06);border:1px solid rgba(196,168,130,.35);border-radius:12px;padding:28px 22px;text-align:center;">
+                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">Skin Health Score</div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:300;color:#F5F0EB;line-height:1;">{score}<span style="font-size:18px;color:#C4A882;">/100</span></div>
+                    <div style="font-size:12px;color:rgba(245,240,235,.4);margin-top:7px;font-weight:300;">{score_label}</div>
+                    <div style="margin-top:12px;height:3px;background:rgba(245,240,235,.08);border-radius:2px;">
+                        <div style="width:{score}%;height:100%;border-radius:2px;background:linear-gradient(90deg,#C4A882,#E8D5B7);"></div>
+                    </div>
+                </div>
+                <div style="background:rgba(245,240,235,.04);border:1px solid rgba(196,168,130,.15);border-radius:12px;padding:28px 22px;text-align:center;">
+                    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.25em;color:rgba(196,168,130,.7);text-transform:uppercase;margin-bottom:12px;">Report Sections</div>
+                    <div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:#F5F0EB;margin:10px 0;">6 Areas</div>
+                    <div style="font-size:12px;color:rgba(245,240,235,.4);font-weight:300;">Comprehensive coverage</div>
+                </div>
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -434,7 +455,6 @@ if analyze:
                 file_name="DermAI_Skin_Report.pdf",
                 mime="application/pdf"
             )
-        st.markdown('</div>', unsafe_allow_html=True)
 
 
 # ─────────────────────────────────────────────
