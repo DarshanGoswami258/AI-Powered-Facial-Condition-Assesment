@@ -129,16 +129,16 @@ with right:
 
     st.markdown("<div class='card'>", unsafe_allow_html=True)
 
-    st.subheader("How It Works")
+    st.subheader("How It Works:")
 
     st.write("""
-1 Upload a **clear face image**
+1. Upload a **clear face image**
 
-2 AI analyzes **skin texture, tone and patterns**
+2. AI analyzes **skin texture, tone and patterns**
 
-3 Receive a **personalized dermatology report**
+3. Receive a **personalized dermatology report**
 
-Report includes:
+Report Includes:
 
 • Skin Type  
 • Skin Concerns  
