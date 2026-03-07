@@ -17,55 +17,61 @@ st.set_page_config(
 # --------------------------------
 # CUSTOM CSS
 # --------------------------------
-
 st.markdown("""
 <style>
 
-.step-container{
-    display:flex;
-    align-items:center;
-    margin-bottom:20px;
+body {
+background: linear-gradient(135deg,#0f172a,#1e293b);
 }
 
-.number-tile{
-    width:60px;
-    height:60px;
-    background:linear-gradient(145deg,#1e66c7,#2f7df0);
-    color:white;
-    font-size:30px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:10px;
-    box-shadow: 
-        inset 0 3px 8px rgba(0,0,0,0.3),
-        0 4px 10px rgba(0,0,0,0.2);
-    margin-right:15px;
+.title{
+font-size:48px;
+font-weight:700;
+text-align:center;
+color:white;
 }
 
-.step-text{
-    font-size:20px;
+.subtitle{
+text-align:center;
+color:#cbd5f5;
+font-size:20px;
+margin-bottom:40px;
+}
+
+.card{
+background: rgba(255,255,255,0.05);
+padding:30px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,0.1);
+backdrop-filter: blur(8px);
+}
+
+.report-card{
+background:white;
+padding:35px;
+border-radius:12px;
+box-shadow:0px 15px 35px rgba(0,0,0,0.25);
+}
+
+.metric-box{
+background:#f8fafc;
+padding:20px;
+border-radius:10px;
+text-align:center;
+}
+
+.stButton>button{
+background:linear-gradient(45deg,#6366f1,#9333ea);
+color:white;
+border-radius:10px;
+font-size:18px;
+height:50px;
+width:100%;
 }
 
 </style>
-
-<div class="step-container">
-<div class="number-tile">1</div>
-<div class="step-text">Upload a clear face image</div>
-</div>
-
-<div class="step-container">
-<div class="number-tile">2</div>
-<div class="step-text">AI analyzes skin texture, tone and patterns</div>
-</div>
-
-<div class="step-container">
-<div class="number-tile">3</div>
-<div class="step-text">Receive a personalized dermatology report</div>
-</div>
-
 """, unsafe_allow_html=True)
+
 
 # --------------------------------
 # GEMINI CONFIG
