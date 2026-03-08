@@ -216,10 +216,6 @@ st.markdown("""
         Upload a facial photograph and receive a comprehensive dermatological
         assessment — powered by advanced generative AI.
     </div>
-    <div class="badge">
-        <span class="dot"></span>
-        Powered by Gemini &nbsp;·&nbsp; Clinical-grade insights
-    </div>
 </div>
 """, unsafe_allow_html=True)
 
